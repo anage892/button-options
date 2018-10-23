@@ -1,0 +1,18 @@
+<div class="title-and-buttons">
+  <div class="w-title" (click)="onError()">{{ title }}</div>
+
+  <div class="all-buttons">
+    <button *ngFor="let option of options; let i = index"
+      class="stroked-button button{{ i }}"
+      [ngClass]="{ 'selected-border': selectedButtonNumber === (i + 1),
+        'normal-border': !error && selectedButtonNumber !== (i + 1),
+        'error-border': error }"
+      (click)="pickOption(i)">
+      {{ option }}
+    </button>
+<!-- the class custom-error was made because the mat-buttons are not a mat-form -->
+    <div *ngIf="error" class="custom-error w-text">
+        {{ optionsError }}
+    </div>
+  </div>
+</div>
